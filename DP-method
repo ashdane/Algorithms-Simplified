@@ -1,0 +1,21 @@
+function largest_sum_DP(arr)
+{
+    let sum = arr[0];
+    let largest_sum = arr[0];
+    for(let i=0 ; i<arr.length; i++)
+    {
+        if(arr[i]<sum+arr[i])
+        {
+            arr[i] = arr[i]+sum; 
+        }
+        sum = arr[i];
+    }
+    for(i=0; i<arr.length; i++)
+    {
+        if(arr[i]>largest_sum)
+        {
+            largest_sum = arr[i];
+        }
+    }
+    console.log(largest_sum);
+}
