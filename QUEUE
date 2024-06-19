@@ -1,0 +1,55 @@
+//declaration and initialization
+let queue = [];
+let front = rear = 0;
+//enqueue
+function enqueue(queue, task)
+{
+    queue[rear++] = task;
+}
+//dequeue
+function dequeue(queue)
+{
+    console.log("\n");
+    if(front == rear)
+    {
+        console.log("Queue Underflow");
+    }
+    else
+    {
+        console.log(queue[front++], "has been dequeued");
+    }
+}
+//display
+function display(queue)
+{
+    console.log("\n")
+    console.log("QUEUE:")
+    for(let i=front; i<rear; i++)
+    {
+        console.log(queue[i]);
+    }
+}
+//peek
+function peek(queue)
+{
+    console.log("\n");
+    console.log("PEEK: ");
+    if(front == rear)
+    {
+        console.log("Queue Underflow");
+    }
+    else
+    {
+        console.log(queue[front]);
+    }
+}
+//function call
+display(queue);
+enqueue(queue, "Task_1");
+enqueue(queue, "Task_2");
+display(queue);
+enqueue(queue, "Task_3");
+display(queue);
+dequeue(queue);
+display(queue);
+peek(queue);
