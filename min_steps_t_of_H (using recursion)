@@ -1,0 +1,13 @@
+function tower_of_Hanoi(blocks)
+{
+    if(blocks == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return tower_of_Hanoi(blocks-1) + 2**(blocks-1);
+    }
+}
+const blocks = prompt("Number of blocks: ");
+console.log("Minimum number of steps required: ", tower_of_Hanoi(blocks));
