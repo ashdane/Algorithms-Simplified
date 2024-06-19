@@ -1,16 +1,25 @@
 //declaration and initialization
 let queue = [];
-let front = rear = 0;
+let front = rear = -1;
 //enqueue
 function enqueue(queue, task)
 {
-    queue[rear++] = task;
+    if(front == -1 && rear == -1)
+    {
+        ++rear;
+        ++front;
+        queue[rear] = task;
+    }
+    else
+    {
+        queue[++rear] = task;
+    }
 }
 //dequeue
 function dequeue(queue)
 {
     console.log("\n");
-    if(front == rear)
+    if(front == -1 || front>rear)
     {
         console.log("Queue Underflow");
     }
@@ -22,11 +31,14 @@ function dequeue(queue)
 //display
 function display(queue)
 {
-    console.log("\n")
-    console.log("QUEUE:")
-    for(let i=front; i<rear; i++)
+    if(front != -1)
     {
-        console.log(queue[i]);
+        console.log("\n")
+        console.log("QUEUE:")
+        for(let i=front; i<=rear; i++)
+        {
+            console.log(queue[i]);
+        }
     }
 }
 //peek
@@ -43,13 +55,26 @@ function peek(queue)
         console.log(queue[front]);
     }
 }
-//function call
-display(queue);
-enqueue(queue, "Task_1");
-enqueue(queue, "Task_2");
-display(queue);
-enqueue(queue, "Task_3");
-display(queue);
+function reverse(queue, front, rear)
+{
+    if(front < rear)
+    {
+        let temp = queue[front];
+        queue[front] = queue[rear];
+        queue[rear] = temp;
+        reverse(queue, front+1, rear-1);
+    }
+}
+enqueue(queue, "task_1");
+enqueue(queue, "task_2");
+enqueue(queue, "task_3");
+enqueue(queue, "task_4");
 dequeue(queue);
-display(queue);
+enqueue(queue, "task_5");
+enqueue(queue, "task_6");
+dequeue(queue);
+dequeue(queue);
 peek(queue);
+display(queue);
+reverse(queue, front, rear);
+display(queue);
