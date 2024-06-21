@@ -1,0 +1,61 @@
+//create stack
+let stack = [];
+let top = -1;
+//push
+function push(stack, task)
+{
+    stack[++top] = task;
+}
+//pop
+function pop(stack)
+{
+    if(top == -1)
+    {
+        console.log("Stack Underflow");
+    }
+    else
+    {
+        console.log("Popped: ", stack[top]);
+        top--;
+    }
+}
+//display
+function display(stack)
+{
+    if(top == -1)
+    {
+        console.log("Stack Underflow");
+    }
+    else
+    {
+        let temp = top;
+        while(temp>=0)
+        {
+            console.log(stack[temp]);
+            temp--;
+        }
+    }
+}
+//peek
+function peek(stack)
+{
+    if(top == -1)
+    {
+        console.log("Stack Underflow");
+    }
+    else
+    {
+        console.log(stack[top]);
+    }
+}
+display(stack);
+push(stack, "Task_1");
+push(stack, "Task_2");
+push(stack, "Task_3");
+push(stack, "Task_4");
+push(stack, "Task_5");
+display(stack);
+pop(stack);
+display(stack);
+pop(stack);
+peek(stack);
