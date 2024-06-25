@@ -1,0 +1,46 @@
+function isLetter(char) {
+    return char.match(/[a-zA-Z]/) !== null;
+}
+let infix = "((a+b)-c*(d/e))+f";
+let infix_array = infix.split("");
+let stack = [];
+let postfix = [];
+for(i=0; i<infix_array.length; i++)
+{
+    if(isLetter(infix_array[i]))
+    {
+        console.log(infix_array[i]);
+        postfix.push(infix_array[i]);
+    }
+    else if(infix_array[i] == '(')
+    {
+        stack.push(infix_array[i]);
+    }
+    else if(infix_array[i] == '^')
+    {
+        stack.push(infix_array[i]);
+    }
+    else if(infix_array[i] == '*' || infix_array[i] == '/')
+    {
+        stack.push(infix_array[i]);
+    }
+    else if(infix_array[i] == '+' || infix_array[i] == '-')
+    {
+        stack.push(infix_array[i]);
+    }
+    else
+    {
+        while(stack[stack.length-1] != '(')
+        {
+            postfix.push(stack.pop());
+        }
+        stack.pop();
+        console.log(stack)
+    }
+}
+for(i=0; i<stack.length; i++)
+{
+    postfix.push(stack[i]);
+}
+answer = postfix.join("");
+console.log(answer);
