@@ -1,0 +1,72 @@
+//Bubble Sort
+function bs(arr, low, high)
+{
+    let i;
+    let j;
+    for(i=low; i<high; i++)
+    {
+        for(j=low; j<high; j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                let temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+//Selection Sort
+function ss(arr, low, high)
+{
+    let i;
+    let j;
+    for(i=low; i<=high; i++)
+    {
+        let min = arr[i];
+        for(j=i+1; j<=high; j++)
+        {
+            if(arr[j]<min)
+            {
+                let temp = min;
+                min = arr[j];
+                arr[j] = temp;
+            }
+        }
+        arr[i] = min;
+    }
+}
+//Insertion Sort
+function is(arr, low, high)
+{
+    let i;
+    let j;
+    for(i=low+1; i<=high; i++)
+    {
+        let r = i;
+        while(arr[r]<arr[r-1])
+        {
+            let temp = arr[r];
+            arr[r] = arr[r-1];
+            arr[r-1] = temp;
+            r--;
+        }
+    }
+}
+//taking Input
+let arr = []
+let len = prompt("Enter length of array: ");
+for(let k=0; k<len; k++)
+{
+    let s = parseInt(prompt("enter element: "));
+    arr.push(s);
+}
+let low = 0;
+let mid = Math.floor((arr.length-1)/2);
+let high = arr.length-1;
+//function calls
+bs(arr, low, mid);
+ss(arr, mid, high);
+is(arr, low, high);
+//Output
+console.log(arr);
