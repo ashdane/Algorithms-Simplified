@@ -1,0 +1,51 @@
+//Merge Sort
+function merge(arr, low, high, mid)
+{
+    let first_half = [];
+    let second_half = [];
+    let i;
+    let j;
+    for(i=low; i<mid; i++)
+    {
+        first_half.push(arr[i]);
+    }
+    for(j=mid; j<high; j++)
+    {
+        second_half.push(arr[j]);
+    }
+    i = 0;
+    j = 0;
+    let k = low;
+    while(i<first_half.length && j<second_half.length)
+    {
+        if(first_half[i]<second_half[j])
+        {
+            arr[k++] = first_half[i++];
+        }
+        else
+        {
+            arr[k++] = second_half[j++];
+        }
+    }
+    while(i<first_half.length)
+    {
+        arr[k++] = first_half[i++];
+    }
+    while(j<second_half.length)
+    {
+        arr[k++] = second_half[j++];
+    }
+}
+function merge_sort(arr, low, high)
+{
+    if(high-low>1)
+    {
+        let mid = Math.floor(low + (high-low)/2);
+        merge_sort(arr, low, mid);
+        merge_sort(arr, mid, high);
+        merge(arr, low, high, mid);
+    }
+}
+arr = [3,1,2,7,9,26,34,12,5,8];
+merge_sort(arr, 0, arr.length);
+console.log("Sorted Array:", arr);
