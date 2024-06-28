@@ -1,0 +1,16 @@
+//solution: ineffiecient version
+int* countSmaller(int* nums, int numsSize, int* returnSize) {
+     int* output = (int*) malloc(sizeof(int) * (numsSize));
+     *returnSize = numsSize; 
+     int i,j; int lesser_than_element; 
+     for(i=0; i<numsSize; i++) {
+        lesser_than_element = 0; 
+        for(j=i+1; j<numsSize; j++) {
+             if(nums[j]<nums[i]) { 
+                lesser_than_element++; 
+             }
+        }
+        output[i] = lesser_than_element; 
+    }
+    return output; 
+}
